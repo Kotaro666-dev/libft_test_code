@@ -6,7 +6,7 @@
 /*   By: kkamashi <kkamashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
-/*   Updated: 2020/06/29 16:15:39 by kkamashi         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:38:05 by kkamashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -857,12 +857,13 @@ void test_ft_putnbr()
 	printf("\n");
 }
 
-char add_word(unsigned int i, char c)
+char add_5_words(unsigned int i, char c)
 {
-	int temp;
-
-	temp = i;
-	return (c);
+	if (i < 5)
+	{
+		return (c);
+	}
+	return (0);
 }
 
 void test_ft_strmapi()
@@ -873,7 +874,8 @@ void test_ft_strmapi()
 	char (*func)(unsigned int, char);
 
 	printf("s = %s\n", str);
-	func = add_word;
+	printf("f = add_5_words(unsigned int i, char c)\n");
+	func = add_5_words;
 	result = ft_strmapi(str, func);
 	printf("result = %s\n", result);
 }
