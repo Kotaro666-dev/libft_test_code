@@ -6,7 +6,7 @@
 /*   By: kkamashi <kkamashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
-/*   Updated: 2020/06/29 16:38:05 by kkamashi         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:44:39 by kkamashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -917,7 +917,7 @@ int main(int argc, char *argv[])
 		test_ft_putnbr();
 		test_ft_strmapi();
 	}
-	if (argc > 1)
+	if (argc == 2)
 	{
 		// !MEMORY
 		if (strcmp(argv[1], "memcpy") == 0)
