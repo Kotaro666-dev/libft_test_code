@@ -6,7 +6,7 @@
 /*   By: kkamashi <kkamashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
-/*   Updated: 2020/06/29 00:20:39 by kkamashi         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:15:39 by kkamashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-// FT_SPLIT
+// FT_SPLIT用
 static int				count_divisions(char const *str, char target)
 {
 	int i;
@@ -813,6 +813,7 @@ void test_ft_memccpy()
 
 void test_ft_memmove()
 {
+	printf("--------TEST: FT_MEMMOVE-------\n\n");
 	char first[] = "stackoverflow";
 	char second[] = "stackoverflow";
 	int start = 5;
@@ -828,6 +829,53 @@ void test_ft_memmove()
 	printf("dest = %s, src = %s, n = %d\n", second + start, second, n);
 	ft_memmove(second+5, second, 7);
 	printf("After ：%s\n", second);
+}
+
+void test_ft_putnbr()
+{
+	printf("--------TEST: FT_PUTNBR-------\n\n");
+	int test1 = 12345;
+	int test2 = -12345;
+	int test3 = INT_MAX;
+	int test4 = INT_MIN;
+
+	printf("---------TEST1----------\n\n");
+	printf("Test1: %d\n", test1);
+	ft_putnbr_fd(test1, 1);
+	printf("\n");
+	printf("---------TEST2----------\n\n");
+	printf("Test2: %d\n", test2);
+	ft_putnbr_fd(test2, 1);
+	printf("\n");
+	printf("---------TEST3----------\n\n");
+	printf("Test3: %d\n", test3);
+	ft_putnbr_fd(test3, 1);
+	printf("\n");
+	printf("---------TEST4----------\n\n");
+	printf("Test4: %d\n", test4);
+	ft_putnbr_fd(test4, 1);
+	printf("\n");
+}
+
+char add_word(unsigned int i, char c)
+{
+	int temp;
+
+	temp = i;
+	return (c);
+}
+
+void test_ft_strmapi()
+{
+	printf("--------TEST: FT_STRMAPI-------\n\n");
+	char *str = "0123456789";
+	char *result;
+	char (*func)(unsigned int, char);
+
+	printf("s = %s\n", str);
+	func = add_word;
+	result = ft_strmapi(str, func);
+	printf("result = %s\n", result);
 }
 
 int main(int argc, char *argv[])
@@ -851,17 +899,21 @@ int main(int argc, char *argv[])
 		test_ft_strrchr();
 		test_ft_strlcat();
 		test_ft_atoi();
-		test_ft_itoa();
-		test_ft_split();
-		test_ft_strtrim();
-		test_ft_substr();
 		test_ft_strnstr();
 		test_ft_strncmp();
-		test_ft_strjoin();
 		test_ft_strlcpy();
 
 		// !MALLOC
 		test_ft_strdup();
+
+		//! 自作関数
+		test_ft_substr();
+		test_ft_strjoin();
+		test_ft_strtrim();
+		test_ft_split();
+		test_ft_itoa();
+		test_ft_putnbr();
+		test_ft_strmapi();
 	}
 	if (argc > 1)
 	{
@@ -896,6 +948,16 @@ int main(int argc, char *argv[])
 			test_ft_strlcat();
 		if (strcmp(argv[1], "atoi") == 0)
 			test_ft_atoi();
+		if (strcmp(argv[1], "strnstr") == 0)
+			test_ft_strnstr();
+		if (strcmp(argv[1], "strncmp") == 0)
+			test_ft_strncmp();
+		if (strcmp(argv[1], "strlcpy") == 0)
+			test_ft_strlcpy();
+
+		// !MALLOC
+		if (strcmp(argv[1], "strdup") == 0)
+			test_ft_strdup();
 		if (strcmp(argv[1], "itoa") == 0)
 			test_ft_itoa();
 		if (strcmp(argv[1], "split") == 0)
@@ -904,18 +966,12 @@ int main(int argc, char *argv[])
 			test_ft_strtrim();
 		if (strcmp(argv[1], "substr") == 0)
 			test_ft_substr();
-		if (strcmp(argv[1], "strnstr") == 0)
-			test_ft_strnstr();
-		if (strcmp(argv[1], "strncmp") == 0)
-			test_ft_strncmp();
 		if (strcmp(argv[1], "strjoin") == 0)
 			test_ft_strjoin();
-		if (strcmp(argv[1], "strlcpy") == 0)
-			test_ft_strlcpy();
-
-		// !MALLOC
-		if (strcmp(argv[1], "strdup") == 0)
-			test_ft_strdup();
+		if (strcmp(argv[1], "putnbr") == 0)
+			test_ft_putnbr();
+		if (strcmp(argv[1], "strmapi") == 0)
+			test_ft_strmapi();
 	}
 	return (0);
 }
